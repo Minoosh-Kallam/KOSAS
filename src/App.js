@@ -3,8 +3,10 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useThemeHook } from "./GlobalComponents/ThemeProvider";
 import Header from "./components/Header";
-import { Router } from "@reach/router";
 
+// import { BrowserRouter, Router } from "react-router-dom/cjs/react-router-dom";
+
+import { BrowserRouter ,Router, Route} from "react-router-dom";
 
 
 // pages
@@ -15,17 +17,13 @@ import Cart from './Pages/Cart';
 
 function App() {
   const [theme] = useThemeHook();
+
   return (
     <main className={theme ? "bg-black" : "bg-light-2"} style={{ height: '100vh', overflowY: 'auto'}}>
       <Header />
-      <Router>
-        <Home path="/" />
-        {/* <MyAccount path="my-account" />
-        <SignIn path="sign-in"/> 
-        <Register path="register"/>
-        <ProductDetails path="product-details/:productId"/> */}
-        <Cart path="/cart" />
-      </Router>
+        <Route exact path="/" ><Home /></Route>
+        <Route exact path="/cart" > <Cart /> </Route>
+        <Route exact path="/home"> <Home/> </Route>
     </main>
   );
 }

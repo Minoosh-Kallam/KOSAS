@@ -3,12 +3,13 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { ThemeContext } from "../GlobalComponents/ThemeProvider";
 import { BiSun, BiMoon, BiCart } from "react-icons/bi";
 import { VscAccount } from 'react-icons/vsc';
-import { Link } from "@reach/router";
 import { useCart } from "react-use-cart";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
+  const height = window.innerHeight;
 
   useEffect(() => {
     setThemeMode(darkMode);
@@ -18,6 +19,7 @@ const Header = () => {
   const { isEmpty, totalItems } = useCart();
 
   return (
+    <div style={{display: "flex", height:`${height*10/100}px`}}>
     <Navbar
       collapseOnSelect
       expand="md"
@@ -25,7 +27,7 @@ const Header = () => {
       className={
         darkMode ? "bg-light-black border-bottom" : "bg-light border-bottom"
       }
-      style={{ width: "100%", position: "fixed", zIndex: 100 }}
+      style={{ width: "100%", position: "fixed", zIndex: 100, height:`${height*10/100}px` }}
     >
       <Container>
         <Link to="/">
@@ -83,7 +85,9 @@ const Header = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </div>
   );
 };
 
 export default Header;
+

@@ -5,17 +5,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './GlobalComponents/ThemeProvider';
+import { BrowserRouter } from 'react-router-dom';
 
 
-// render(
-//     <React.StrictMode>
-//       <ThemeProvider>
-//         {/* <CartProvider> */}
-//           <App />
-//         {/* </CartProvider> */}
-//       {/* </ThemeProvider> */}
-//     </React.StrictMode>
-//   , document.getElementById('root'));
+render(
+    <React.StrictMode>
+      <BrowserRouter>
+      <ThemeProvider>
+        {/* <CartProvider> */}
+          <App />
+        {/* </CartProvider> */}
+      </ThemeProvider>
+      </BrowserRouter>
+    </React.StrictMode>
+  , document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
